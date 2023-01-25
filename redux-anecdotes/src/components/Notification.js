@@ -1,21 +1,11 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { hide } from '../reducers/notificationReducer'
-
-let timer = null
+import { useSelector } from 'react-redux'
 
 const Notification = () => {
-  const dispatch = useDispatch()
   const { message } = useSelector(state => state.notification)
 
-  if (message === null) {
+  if (!message) {
     return null
   }
-
-  clearTimeout(timer)
-
-  timer = setTimeout(() => {
-    dispatch(hide())
-  }, 5000);
 
   const style = {
     border: 'solid',
